@@ -1,0 +1,55 @@
+### 1. GET All Tasks (Success)
+GET http://localhost:8080/tasks
+X-API-KEY: secret12345
+Accept: application/json
+
+### 2. GET Single Task by ID (Success)
+GET http://localhost:8080/tasks?id=1
+X-API-KEY: secret12345
+Accept: application/json
+
+### 3. GET Task - Not Found (Error)
+GET http://localhost:8080/tasks?id=999
+X-API-KEY: secret12345
+Accept: application/json
+
+### 4. GET Task - Invalid ID (Error)
+GET http://localhost:8080/tasks?id=abc
+X-API-KEY: secret12345
+Accept: application/json
+
+### 5. POST Create New Task (Success)
+POST http://localhost:8080/tasks
+X-API-KEY: secret12345
+Content-Type: application/json
+
+{
+  "title": "Finish Go Assignment"
+}
+
+### 6. POST Create Task - Missing Title (Error)
+POST http://localhost:8080/tasks
+X-API-KEY: secret12345
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+### 7. PATCH Update Task (Success)
+PATCH http://localhost:8080/tasks?id=1
+X-API-KEY: secret12345
+Content-Type: application/json
+
+{
+  "done": true
+}
+
+### 8. Unauthorized Access (Error)
+GET http://localhost:8080/tasks
+Accept: application/json
+
+### 9. Wrong API Key (Error)
+GET http://localhost:8080/tasks
+X-API-KEY: wrong-password
+Accept: application/json
