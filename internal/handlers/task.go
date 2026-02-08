@@ -116,14 +116,14 @@ func handlePatch(w http.ResponseWriter, r *http.Request) {
 
 	for i, task := range tasks {
 		if task.ID == id {
-			tasks[i].Done = reqBody.Done // Update status [cite: 77]
+			tasks[i].Done = reqBody.Done
 
 			w.WriteHeader(http.StatusOK)
-			json.NewEncoder(w).Encode(map[string]bool{"updated": true}) //
+			json.NewEncoder(w).Encode(map[string]bool{"updated": true})
 			return
 		}
 	}
 
 	w.WriteHeader(http.StatusNotFound)
-	json.NewEncoder(w).Encode(map[string]string{"error": "task not found"}) // [cite: 90]
+	json.NewEncoder(w).Encode(map[string]string{"error": "task not found"})
 }
